@@ -1,0 +1,17 @@
+		body{ background: url("https://www.wellbeing.com.au/wp-content/uploads/blogimgs/2014/08/111.jpeg") no-repeat center center fixed; 
+		 background-size: cover; }
+		#container{ width:99vw; height:85vh; /*background-color:red;*/ }
+		#placeOfWork{ margin-left:-1vw; width:100.5vw; height:6vh; margin-top:5%; /*background-color: green;*/ background: url("https://i.pinimg.com/originals/19/2a/8c/192a8c19663a404a33b8321d88acede5.jpg") no-repeat center center fixed; background-size: cover; }
+		#space{ width:25%; height:100%; float:left; }
+		.optionBtns{ height:100%; width:15%; font-family: "Parisienne"; font-size: 26px;}
+		#workStarters{ width:99vw; height:78vh; /*background-color:yellow;*/ overflow: auto;}
+		.itemListing{ font-size: 24px; }
+		.TheSButton, .TheMButton, .TheDButton{ width:50%; height:10%; font-family: "Berkshire Swash"; border-radius: 25%; font-weight: bold; font-size: 20px; }
+		.btn, .mbtn, .dbtn{ width:50%; height:10%; font-family: "Berkshire Swash"; border-radius: 25%; font-weight: bold; font-size: 20px; }
+
+		.theDocket{ /*width:18vw; height:46vh;*/ width:19vw; height:77vh; margin-right: 5px; margin-bottom:2px; margin-top: 3px; float:left; border: 1px solid black; background-color: white; }
+		.docketHeader{ width:100%; height:10%; background-color: white; }
+		.tNum{ height:100%; width:30%; float:left; float: top; text-align: center; background-color: green; font-size: 13px; border-radius:25%; font-family: "Berkshire Swash" }
+		.logo{ width: 40%; height:100%; background-color: #e8e9ea; float:left; text-align: center; font-family: "Parisienne"; font-weight: bold; font-size: 40px; border-radius:25%; }
+		#demo, #mdemo, #ddemo{ height:100%; width:30%; text-align: center; float:right; float: top; background-color: green; font-size: 13px; border-radius:25%; font-family: "Berkshire Swash" }
+		.docketContents{ width:100%; height:80%; background-color: white; text-align: center; text-decoration: underline; overflow: auto; }
