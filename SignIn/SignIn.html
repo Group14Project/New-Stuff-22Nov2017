@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <!--<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>-->
+	    <script src = "http://www.gstatic.com/firebasejs/4.6.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script src = "http://www.gstatic.com/firebasejs/4.6.0/firebase-auth.js"></script>
+    <script src = "http://www.gstatic.com/firebasejs/4.6.0/firebase-database.js"></script>
+    <script src = "http://www.gstatic.com/firebasejs/4.6.0/firebase-messaging.js"></script>
+    <script src = "http://www.gstatic.com/firebasejs/4.6.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+	<link href='https://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet'>
+	<link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
+	<link rel="stylesheet" type="text/css" href="SignIn.css">
+  </head>
+	<body >
+	
+	 <h1>Dished Out</h1>
+	<!--background="https://www.google.ie/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=0ahUKEwihzpT_ta3XAhUDKsAKHVGhD-sQjRwIBw&url=https%3A%2F%2Fwww.123rf.com%2Fphoto_46735189_set-menu-card-for-restaurants-on-wooden-background.html&psig=AOvVaw1YmkcowbVgQ_V0EO8D4N46&ust=1510176971503759">-->
+  <div id = "line"></div><!--
+  --><div id = "main">
+    <div id = "container" class= "container" style="display:block;">
+	 <p>Sign In</p>
+	 <input id = "entEmail" type="email" class = "input1" placeholder="Email"><br><br>
+	 <input id = "entPassword" type="password" class = "input1" placeholder="Password"><br>
+	 
+	 <p id = "incorrect">Incorrect Log in Details</p><br>
+	 <div style="text-align:center">    
+       <a class = "pull-right" href="#" onclick ="showDiv1()">Forgot password?</a><br><br>
+     </div>
+	 <!--<a class="pull-right" href="#" onclick ="showDiv1()">Forgot password?</a><br>-->
+
+	 <button id = "btnSignIn" class="btn btn-action">Log In</button>
+	<input type = "button" id = "btnSignUp1" class="btn btn-action" onclick ="showDiv()" value = "Sign Up"/>
+	 <button id = "btnLogOut" class="btn btn-action">Log Out</button><br>
+	
+	 
+	</div>
+	<!------------------------------------------------------------------------------------------------------------------------------------------------>
+	 
+	 <div id = "container2" class= "container2" style="display:none;" >
+	 <p>Sign Up</p>
+	<input id = "entcomName" type="name" class = "input1" placeholder="Company Name"><br><br>
+	 
+	
+	 <input id = "entName" type="name" class = "input1" placeholder="Name"><br><br>
+	 
+	 
+	 <input id = "enterEmail" type="email" class = "input1" placeholder="Email"><br><br>
+	 
+	
+	 <input id = "enterPassword" type="password" class = "input1" placeholder="Password"><br><br>
+	 
+	  <button id = "btnSignUp" class="btn btn-action">Register</button>
+	 
+	 
+	</div>
+	<!------------------------------------------------------------------------------------------------------------------------------------------------>
+		 <div id = "container3" class= "container3" style="display:none;" >
+		 
+		  <input id = "enterEmail1" type="email" class = "input1" placeholder="Email"><br><br>
+		 
+		 <button id = "btnReset" class="btn btn-action">Reset Password</button>
+	</div>
+	</div>
+	
+	<script src = "SignIn.js" ></script>
+	
+   </body>
+ </html>
+
+

@@ -1,0 +1,187 @@
+body {
+  background-image:url("https://www.wellbeing.com.au/wp-content/uploads/blogimgs/2014/08/111.jpeg"); 
+  background-repeat:no-repeat;
+  background-size:1500px 800px;
+}
+
+#main{
+    text-align:center;
+    margin: 0 auto;
+    width: 500px;
+	height: 400px;
+    background: white;
+   
+}
+#line{
+	text-align:center;
+    width: 100%;
+	height: 30px;
+	background: black;
+	margin:0px;
+	background-image:url("https://i.pinimg.com/originals/19/2a/8c/192a8c19663a404a33b8321d88acede5.jpg");
+}
+.container{
+width:100%;
+margin:auto;    
+}
+.container2{
+width:100%;
+margin:auto;    
+}
+h1{
+	text-align:center;
+	font-family:Parisienne;
+	font-size:60px;
+	
+}
+p{
+	text-align:center;
+	font-family: Berkshire Swash;
+	font-size: 18px;
+	margin:0px;
+}
+.pull-right{
+	padding-left:auto;
+	text-align:left;
+	color: blue;
+	font-family: Berkshire Swash;
+}
+
+.input1 {
+	font-family: Berkshire Swash;
+	height:32px;
+    font-size:14pt;
+    display: inline-block;
+    width:50%;
+	margin: 0 auto;
+	display:table;
+    position: relative;
+    top: 20px;
+	border:2px #e4e4e4 solid;
+    box-shadow:inset 0 1px 2px #000000;
+    -moz-box-shadow:inset 0 1px 2px #000000;
+    -webkit-box-shadow:inset 0 1px 2px #000000;
+    line-height: px;
+    padding-left: 18px;
+	text-align:center;
+	-webkit-border-radius: 50px;
+-moz-border-radius: 50px;
+border-radius: 50px;
+} 
+#incorrect{
+	 color : red;
+	 display: none;
+	 font-size: 12px;
+	 
+}
+label {
+    display: inline-block;
+    width: 7em;
+    margin-right: .1em;
+    padding-top: 1em;
+	text-align:left;
+	font-size:20px ;
+	font-family: Berkshire Swash;
+}
+
+#btnSignIn{
+	font-family: Berkshire Swash;
+	color: #fff;
+    background-color: black;
+    width: 300px;
+    height: 40px; 
+	background-image:url("https://i.pinimg.com/originals/19/2a/8c/192a8c19663a404a33b8321d88acede5.jpg");
+}
+#btnSignUp1{
+	font-family: Berkshire Swash;
+	color: #fff;
+    background-color: black;
+    border-color:
+	display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+	touch-action: manipulation;
+    cursor: pointer;
+	user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+	width: 300px;
+    height: 40px;
+   	background-image:url("https://i.pinimg.com/originals/19/2a/8c/192a8c19663a404a33b8321d88acede5.jpg");
+}
+#btnSignUp{
+	font-family: Berkshire Swash;
+	color: #fff;
+    background-color: black;
+    border-color:
+	display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+	touch-action: manipulation;
+    cursor: pointer;
+	user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;  
+    width: 300px;
+    height: 40px;
+background-image:url("https://i.pinimg.com/originals/19/2a/8c/192a8c19663a404a33b8321d88acede5.jpg");	
+}
+#btnLogOut{
+	font-family: Berkshire Swash;
+	color: #fff;
+    background-color: black;
+    width: 300px;
+    height: 40px;
+	vertical-align: middle;
+	margin-left:auto;
+	margin-right:auto;
+	background-image:url("https://i.pinimg.com/originals/19/2a/8c/192a8c19663a404a33b8321d88acede5.jpg");
+}	
+	
+}
+#btnReset{
+	font-family: Berkshire Swash;
+	color: #fff;
+    background-color: black;
+	width: 300px;
+    height: 40px;
+	background-image:url("https://i.pinimg.com/originals/19/2a/8c/192a8c19663a404a33b8321d88acede5.jpg");
+  
+
+}
+.btn {
+	font-family: Berkshire Swash;
+	margin: 10px;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+	touch-action: manipulation;
+    cursor: pointer;
+	user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+	width: 300px;
+    height: 40px;
+	background-image:url("https://i.pinimg.com/originals/19/2a/8c/192a8c19663a404a33b8321d88acede5.jpg");
+}
