@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
+		<link href='https://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet'>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	</head>
+
+	<style>
+		.navbar { margin-left:-1vw; width:100.5vw; height:6vh; overflow: hidden; margin-top:5%; /*background-color: green;*/ background: url("https://i.pinimg.com/originals/19/2a/8c/192a8c19663a404a33b8321d88acede5.jpg") no-repeat center center fixed; background-size: cover; }
+		.navbar a { float: left; font-size: 16px; color: white; text-align: center; padding: 14px 16px; text-decoration: none; }
+		.dropdown { float: left; overflow: hidden; }
+		.dropdown, .dropbtn, .enterbtn { cursor: pointer; font-size: 16px; border: none; outline: none; color: white; padding: 6px 16px; background-color: inherit; font-family: "Berkshire Swash"; }
+		.navbar a:hover, .dropbtn:hover, .enterbtn:hover  { background-color: red; }
+		.dropdown-content, .enter-dropdown-content { display: none; position: absolute; background-color: #f9f9f9; width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; }
+		.dropdown-content a, .enter-dropdown-content a { float: none; color: black; padding: 12px 16px; text-decoration: none; display: block; text-align: left; }
+		.dropdown-content a:hover, .enter-dropdown-content a:hover { background-color: #ddd; }
+		.show { display: block; }
+		body{ background: url("https://www.wellbeing.com.au/wp-content/uploads/blogimgs/2014/08/111.jpeg") no-repeat center center fixed; 
+		 background-size: cover; }
+		h3{ color:black; }
+		#placeOfWork{ margin-left:-1vw; width:100.5vw; height:6vh; margin-top:5%; /*background-color: green;*/ background: url("https://i.pinimg.com/originals/19/2a/8c/192a8c19663a404a33b8321d88acede5.jpg") no-repeat center center fixed; background-size: cover; }
+		#space{ width:25%; height:100%; float:left; }
+		#thediv{ width:100%; height:80vh; color:black; align-content: center; }
+		.deleteButton{ float:right; height:2%; font-size: 12px; margin-left: 20px; }
+		#starter{ float:left; margin-right: 150px; width:21vw; }
+		#main{ float:left; margin-right: 150px; width:21vw; }
+		#dessert{ float:left; width:21vw; }
+		.docket{ width:27vw; height:80vh; background-color: white; float:left; margin-right: 1%; text-align: center; overflow: auto; border:1px solid black; }
+		.logo{ width: 40%; height:100%; background-color: #e8e9ea; float:left; text-align: center; font-family: "Parisienne"; font-weight: bold; font-size: 40px; border-radius:25%; }
+		.listen{ height:100%; width:30%; float:left; float: top; text-align: center; background-color: green; font-size: 13px; border-radius:25%; font-family: "Berkshire Swash" }
+		.blank{ height:100%; width:30%; text-align: center; float:right; float: top; background-color: green; font-size: 13px; border-radius:25%; font-family: "Berkshire Swash" }
+	</style>
+
+	<body>
+
+	<div class="navbar">
+	  	<div class="dropdown">
+	    	<button class="dropbtn" onclick="TablesFunction()">Tables
+	      		<i class="fa fa-caret-down"></i>
+	    	</button>
+	    	<div class="dropdown-content" id="myDropdown">
+	      		<h3>How Many Tables</h3>
+	      		<input id="tableCount" placeholder="Table Count"><br><br>
+	      		<button id="subTabCount">Click</button><br><br>
+	    	</div>
+
+
+
+	    	<button class="enterbtn" onclick="EntriesFunction()">Enter Items
+	      		<i class="fa fa-caret-down"></i>
+	    	</button>
+	    	<div class="enter-dropdown-content" id="myEnterDropdown">
+	      		<h3>Add Items</h3>
+	      		<input list="browse" id="choice" placeholder="Course"><br><br>
+				<input type="text" id="name" placeholder="Food"><br><br>
+				
+				<datalist id="browse">
+					<option value="starter">
+					<option value="main">
+					<option value="dessert">
+				</datalist>
+				<input type="text" id="price" placeholder="Price"><br><br>
+				<input type="submit" name="Enter" value="Enter" id="but"><br><br>
+	    	</div>
+	  	</div> 
+	</div>
+
+	<div>
+		<div id="thediv">
+			<div class="docket">
+				<!-- <div class='docketHeader'> <div class='tNum'><h2>Table "+snap.key+"</h2></div> <div class='logo'>D</div> <div id='demo' class='demo"+snap.key+"'></div> </div> -->
+				<div class='docketHeader'>
+					<div class="listen"><h4>STARTERS</h4></div>
+					<div class='logo'>D</div>
+					<div class='blank'><h4>STARTERS</h4></div>
+				</div>
+				<ul id="starter"></ul>
+			</div>
+			<div class="docket">
+				<div class='docketHeader'>
+					<div class="listen"><h4>MAINS</h4></div>
+					<div class='logo'>D</div>
+					<div class='blank'><h4>MAINS</h4></div>
+				</div>
+				<ul id="main"></ul>
+			</div>
+			<div class="docket">
+				<div class='docketHeader'>
+					<div class="listen"><h4>DESSERTS</h4></div>
+					<div class='logo'>D</div>
+					<div class='blank'><h4>DESSERTS</h4></div>
+				</div>
+				<ul id="dessert"></ul>
+			</div>
+		</div>
+	</div>
+
+	<script>
+	/* When the user clicks on the button, 
+	toggle between hiding and showing the dropdown content */
+	function TablesFunction() {
+	    document.getElementById("myDropdown").classList.toggle("show");
+	}
+	function EntriesFunction() {
+	    document.getElementById("myEnterDropdown").classList.toggle("show");
+	}
+
+
+	</script>
+	</body>
+	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+		apiKey: "AIzaSyCdM0cDcs2qJB2llg1a-61TaaABpgzfR-A",
+		authDomain: "test-635ac.firebaseapp.com",
+		databaseURL: "https://test-635ac.firebaseio.com",
+		projectId: "test-635ac",
+		storageBucket: "",
+		messagingSenderId: "88199967986"
+		};
+		firebase.initializeApp(config);
+	</script>
+	<script>
+
+		//send info
+		var opt = document.getElementById("choice");
+		var item = document.getElementById("name");
+		var button = document.getElementById("but");
+		var price = document.getElementById("price");
+		var itemsRef="";
+
+		button.addEventListener("click", function(){
+			itemsRef="";
+			console.log(opt.value);
+			
+			if(opt.value == "starter"){
+				itemsRef = firebase.database().ref().child("roma").child("menu").child("starters");
+				itemsRef = itemsRef.child(item.value);
+
+			}
+			else if(opt.value == "main"){
+				itemsRef = firebase.database().ref().child("roma").child("menu").child("mains");
+				itemsRef = itemsRef.child(item.value);
+			}
+			else{
+				itemsRef = firebase.database().ref().child("roma").child("menu").child("desserts");
+				itemsRef = itemsRef.child(item.value);
+			}
+
+			itemsRef.set({
+				Name: item.value,
+				Price: price.value
+			});
+			opt.value = "";
+			item.value = "";
+			price.value = "";
+			
+		});
+		
+		//retrieve info
+		$(document).ready(function(){
+			var rootRef1 = firebase.database().ref().child("roma").child("menu").child("starters");
+			var rootRef2 = firebase.database().ref().child("roma").child("menu").child("mains");
+			var rootRef3 = firebase.database().ref().child("roma").child("menu").child("desserts");
+
+			rootRef1.on("child_added", snap => {
+				var item = snap.child("Name").val();
+				$("#starter").append("<li>" + item + "<button class='deleteButton' onclick='del(\"starter\", \"" + item + "\")'>Delete</button></li><br>");
+			});
+			rootRef2.on("child_added", snap => {
+				var item = snap.child("Name").val();
+				$("#main").append("<li>" + item + "<button class='deleteButton' onclick='del(\"main\", \"" + item + "\")'>Delete</button></li><br>");
+			});
+			rootRef3.on("child_added", snap => {
+				var item = snap.child("Name").val();
+				$("#dessert").append("<li>" + item + "<button class='deleteButton' onclick='del(\"dessert\", \"" + item + "\")'>Delete</button></li><br>");
+			});
+		});
+
+		//delete items
+		function del(options, theitem){
+
+			var rootRef1 = firebase.database().ref().child("roma").child("menu").child("starters");
+			var rootRef2 = firebase.database().ref().child("roma").child("menu").child("mains");
+			var rootRef3 = firebase.database().ref().child("roma").child("menu").child("desserts");
+
+			if(options == "starter"){
+				//e.remove();
+				rootRef1.child(theitem).remove();
+			}
+			else if(options == "main"){
+				rootRef2.child(theitem).remove();
+			}
+			else{
+				rootRef3.child(theitem).remove();
+			}
+		}
+
+		$(document).on('click','.deleteButton', function() {
+		    $(this).parent().remove();    
+		});
+
+		$("#subTabCount").click(function(){
+			var tabCount = document.getElementById("tableCount").value;
+			var ref = firebase.database().ref().child("roma").child("tableCount");
+			ref.set(tabCount);
+			//console.log(tabCount);
+		});
+				
+
+	</script>
+</html>

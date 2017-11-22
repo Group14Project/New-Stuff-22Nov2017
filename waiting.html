@@ -1,0 +1,285 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
+		<link href='https://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet'>
+	</head>
+	<style>
+		body{ background: url("https://www.wellbeing.com.au/wp-content/uploads/blogimgs/2014/08/111.jpeg") no-repeat center center fixed; 
+		 background-size: cover; }
+		#container{ width:99vw; height:85vh; }
+		#navbar{ margin-left:-1vw; width:100.5vw; height:6vh; margin-top:5%; /*background-color: green;*/ background: url("https://i.pinimg.com/originals/19/2a/8c/192a8c19663a404a33b8321d88acede5.jpg") no-repeat center center fixed; background-size: cover; }
+		#contentsBar{ width:79vw; height:79vh; float: left; overflow: auto; }
+		#direct{ width:20vw; height:79vh; float:left; background-color: yellow; }
+		#selection{ width:50%; height:8%; float:left; font-family: "Berkshire Swash"; }
+		#courseSelection{ width:50%; height:8%; float:left; font-family: "Berkshire Swash"; }
+		#sendDocket{ width:100%; height:8%; font-family: "Parisienne"; font-size: 135%; font-weight: bold; }
+		#outerOrder{ width:100%; height:89.4%; background-color: #e8e9ea; }
+		#orderDisplayed{ margin-left: 1%; width:98%; height:92%; background-color: white; }
+		#totalPrice{ width:98%; margin-left: 1%; height:7%; background-color: #c6c6c6; text-align: center; }
+
+		#starter_docket{ list-style:none; padding-left: 0pt; }
+		#main_docket{ list-style:none; padding-left: 0pt; }
+		#dessert_docket{ list-style:none; padding-left: 0pt; }
+		.starter{ float:left; }
+		.incremental{ width:10%; height:6%; float:right; }
+		.spanPlace{ float:right; }
+		.decremental{ width:10%; height:6%; float:right; }
+		.aligning{ width:100%;float:left; }
+		#retrieved_starter_menu{ float:center; list-style:none; padding-left: 0pt; }
+		#retrieved_main_menu{ float:center; list-style:none; padding-left: 0pt; }
+		#retrieved_dessert_menu{ float:center; list-style:none; padding-left: 0pt; }
+		h3{ font-size: 100%; font-family: "Berkshire Swash"; text-align: center; }
+		.starterItem, .mainItem, .dessertItem{ font-size:110%; font-family: "Berkshire Swash"; }
+		.ourItems{ height:6%; border:1px solid black; margin-bottom: 1%; margin-left: 5%; margin-right: 5%; background-color: #e8e9ea; text-align: center; border-radius: 10%; }
+		.theDocket{ width:22vw; height:75vh; background-color: white; float:left; margin-right: 1%; text-align: center; overflow: auto; border:1px solid black; align-items: center; }
+		.docketHeader{ width:100%; height:10%; }
+		.Docket{ width:100%; height:85%; background-color: white; }
+
+		.logo{ width: 40%; height:100%; background-color: #e8e9ea; float:left; text-align: center; font-family: "Parisienne"; font-weight: bold; font-size: 40px; border-radius:25%; }
+		.listen{ height:100%; width:30%; float:left; float: top; text-align: center; background-color: green; font-size: 13px; border-radius:25%; font-family: "Berkshire Swash" }
+		.blank{ height:100%; width:30%; text-align: center; float:right; float: top; background-color: green; font-size: 13px; border-radius:25%; font-family: "Berkshire Swash" }
+	</style>
+
+	<body>
+		<div id="container">
+			<div id="navbar"></div>
+
+			<!-- show the menu the waitress can choose from -->
+			<div id="contentsBar">
+
+
+				<div class="theDocket">
+					<div class='docketHeader'>
+						<div class="listen"><h3>STARTERS</h3></div>
+						<div class='logo'>D</div>
+						<div class='blank'><h3>STARTERS</h3></div>
+					</div>
+					<div class="Docket">
+						<ul id="retrieved_starter_menu"></ul>
+					</div>
+				</div>
+
+
+				<div class="theDocket">
+					<div class='docketHeader'>
+						<div class="listen"><h3>MAINS</h3></div>
+						<div class='logo'>D</div>
+						<div class='blank'><h3>MAINS</h3></div>
+					</div>
+					<div class="Docket">
+						<ul id="retrieved_main_menu"></ul>
+					</div>
+				</div>
+
+
+				<div class="theDocket">
+					<div class='docketHeader'>
+						<div class="listen"><h3>DESSERTS</h3></div>
+						<div class='logo'>D</div>
+						<div class='blank'><h3>DESSERTS</h3></div>
+					</div>
+					<div class="Docket">
+						<ul id="retrieved_dessert_menu"></ul>
+					</div>
+				</div>
+			</div>
+
+			<!-- show the customers order -->
+			<div id="direct">
+				<select id="selection" placeholder="Tables"></select>
+				<select id="courseSelection" placeholder="Tables">
+					<option value="starter">Starter</option>
+					<option value="main">Main</option>
+					<option value="dessert">Dessert</option>
+				</select>
+				<div id="outerOrder">
+					<div id="orderDisplayed">
+						<ul id="starter_docket"></ul>
+						<ul id="main_docket"></ul>
+						<ul id="dessert_docket"></ul>
+					</div>
+					<div id="totalPrice"></div>
+				</div>
+				
+				<button id="sendDocket">Order</button>
+			</div>
+		</div>
+	</body>
+	<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-firestore.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-messaging.js"></script>
+	<script>
+		var config = {
+		apiKey: "AIzaSyCdM0cDcs2qJB2llg1a-61TaaABpgzfR-A",
+		authDomain: "test-635ac.firebaseapp.com",
+		databaseURL: "https://test-635ac.firebaseio.com",
+		projectId: "test-635ac",
+		storageBucket: "",
+		messagingSenderId: "88199967986"
+		};
+		firebase.initializeApp(config);
+	</script>
+	<script>
+		var ref = firebase.database().ref().child("roma").child("tableCount");
+		ref.on("value", snap=>{
+			$("#selection").empty();
+			$("#selection").append("<option value='blah'>No Table Selected</option>");
+			for(var i = 1; i <= snap.val(); i++){
+		    	$("#selection").append("<option value='"+i+"'>Table "+i+"</option>");
+		    }
+		});
+
+
+
+
+
+		$(document).ready(function(){
+			var starterRef = firebase.database().ref().child("roma").child("menu").child("starters");
+			var mainRef = firebase.database().ref().child("roma").child("menu").child("mains");
+			var dessertRef = firebase.database().ref().child("roma").child("menu").child("desserts");
+
+			//retrieve and update starters
+			starterRef.on("child_added", snap => {
+				var item = snap.child("Name").val();
+				$("#retrieved_starter_menu").append("<div class='ourItems' id='" + item + "'><li class='starterItem'>" + item + "</li></div>");
+			});
+			starterRef.on("child_removed", snap => {
+				var removal = document.getElementById(snap.key);
+				removal.remove();
+			});
+
+			//retrieve and update mains
+			mainRef.on("child_added", snap => {
+				var item = snap.child("Name").val();
+				$("#retrieved_main_menu").append("<div class='ourItems' id='" + item + "'><li class='mainItem'>" + item + "</li></div>");
+			});
+			mainRef.on("child_removed", snap => {
+				var removal = document.getElementById(snap.key);
+				removal.remove();
+			});
+
+			//retrieve and update desserts
+			dessertRef.on("child_added", snap => {
+				var item = snap.child("Name").val();
+				$("#retrieved_dessert_menu").append("<div class='ourItems' id='" + item + "'><li class='dessertItem'>" + item + "</li></div>");
+			});
+			dessertRef.on("child_removed", snap => {
+				var removal = document.getElementById(snap.key);
+				removal.remove();
+			});
+		});
+		
+		/*add item to the ordered items bar*/
+		$(document).on('click','.starterItem', function() {
+		    var savedStarter = this.innerHTML;
+		    var theDiv = document.getElementById("starter_docket");
+		    //console.log(save);    
+		    $(theDiv).append("<span class='aligning'> <li class='starter'>"+savedStarter+"</li> <button class='incremental' value='our"+savedStarter+"'>+</button> <span class='spanPlace' id='our"+savedStarter+"'>1</span> <button class='decremental' value='our"+savedStarter+"'>-</button><br><br> </span>");
+		});
+		$(document).on('click','.mainItem', function() {
+		    var savedMain = this.innerHTML;
+		    var theDiv = document.getElementById("main_docket");
+		    //console.log(save);    
+		    $(theDiv).append("<span> <li class='main'>"+savedMain+"</li> <button class='incremental' value='our"+savedMain+"'>+</button> <span class='spanPlace' id='our"+savedMain+"'>1</span> <button class='decremental' value='our"+savedMain+"'>-</button> </span>");
+		});
+		$(document).on('click','.dessertItem', function() {
+		    var savedDessert = this.innerHTML;
+		    var theDiv = document.getElementById("dessert_docket");
+		    //console.log(save);    
+		    $(theDiv).append("<span> <li class='dessert'>"+savedDessert+"</li> <button class='incremental' value='our"+savedDessert+"'>+</button> <span class='spanPlace' id='our"+savedDessert+"'>1</span> <button class='decremental' value='our"+savedDessert+"'>-</button> </span>");
+		});
+
+		/*listen in on if we increment the item count or decrement the item count*/
+		$(document).on('click','.incremental', function() {
+			var savedVal = this.value;
+			var destValue = document.getElementById(savedVal).innerHTML;
+			destValue++;
+			document.getElementById(savedVal).innerHTML = destValue;
+		});
+		$(document).on('click','.decremental', function() {
+			var savedVal = this.value;
+			var destValue = document.getElementById(savedVal).innerHTML;
+			if(destValue == 1){
+				document.getElementById(savedVal).parentElement.remove();
+			}
+			else{
+				destValue--;
+				document.getElementById(savedVal).innerHTML = destValue;
+			}
+		});
+
+		/*listen in on the place order button*/
+		$("#sendDocket").click(function(){
+			var tableNumber = document.getElementById("selection").value;
+			var course = document.getElementById("courseSelection").value;
+			var slen = document.getElementById("starter_docket").getElementsByTagName("li").length;
+			var mlen = document.getElementById("main_docket").getElementsByTagName("li").length;
+			var dlen = document.getElementById("dessert_docket").getElementsByTagName("li").length;
+
+			var firstNode = document.getElementById("starter_docket");
+			var secondNode = document.getElementById("main_docket");
+			var thirdNode = document.getElementById("dessert_docket");
+
+			for(var i = 0; i < slen; i++){
+				var item = firstNode.getElementsByTagName("LI")[i].innerHTML;
+				var quant = firstNode.getElementsByClassName("spanPlace")[i].innerHTML;
+				//console.log(item);
+				if(tableNumber <= 6){
+					var addRootRef = firebase.database().ref().child("roma").child("dockets").child(course).child(tableNumber); //.child("mains"); .child("desserts");
+					var sendingInfo = addRootRef.child(i);
+					sendingInfo.set({
+						Name: item,
+						Quantity: quant
+					});
+				}
+			}
+			firstNode.innerHTML = "";
+			for(var i = 0; i < mlen; i++){
+				var item = secondNode.getElementsByTagName("LI")[i].innerHTML;
+				var quant = secondNode.getElementsByClassName("spanPlace")[i].innerHTML;
+				//console.log(item);
+				if(tableNumber <= 6){
+					var addRootRef = firebase.database().ref().child("roma").child("dockets").child(course).child(tableNumber); //.child("mains"); .child("desserts");
+					var sendingInfo = addRootRef.child(i);
+					sendingInfo.set({
+						Name: item,
+						Quantity: quant
+					});
+				}
+			}
+			secondNode.innerHTML = "";
+			for(var i = 0; i < dlen; i++){
+				var item = thirdNode.getElementsByTagName("LI")[i].innerHTML;
+				var quant = thirdNode.getElementsByClassName("spanPlace")[i].innerHTML;
+				//console.log(item);
+				if(tableNumber <= 6){
+					var addRootRef = firebase.database().ref().child("roma").child("dockets").child(course).child(tableNumber); //.child("mains"); .child("desserts");
+					var sendingInfo = addRootRef.child(i);
+					sendingInfo.set({
+						Name: item,
+						Quantity: quant
+					});
+				}
+			}
+			thirdNode.innerHTML = "";
+		});
+
+		var starterReady = firebase.database().ref().child("roma").child("dockets").child("starter");
+		starterReady.on("child_removed", snap=>{
+			alert("Starters for Table " + snap.key + " Are Ready");
+		});
+		var mainReady = firebase.database().ref().child("roma").child("dockets").child("main");
+		mainReady.on("child_removed", snap=>{
+			alert("Mains for Table " + snap.key + " Are Ready");
+		});
+		var dessertReady = firebase.database().ref().child("roma").child("dockets").child("dessert");
+		dessertReady.on("child_removed", snap=>{
+			alert("Desserts for Table " + snap.key + " Are Ready");
+		});
+		
+	</script>
+</html>
