@@ -1,78 +1,85 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link href='https://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link href='https://fonts.googleapis.com/css?family=Berkshire Swash' rel='stylesheet'>
-        <style>
-           
- 
-.button:active {
-	background-position: 0 -100px;
-	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.7);
-	-webkit-box-shadow: none;
-    
-}
-            
- 
-            #main{
-                background:white;
-                width: 500px;
-                height: 400px;
-                margin: 0 auto;
-                
-            }
-            #theBar{
-                width:101vw;
-                height:6vh;
-                margin-top: 5%;
-                margin-left:-1vw;
-                background-image: url("https://i.pinimg.com/originals/19/2a/8c/192a8c19663a404a33b8321d88acede5.jpg")
-            }
-            
-            body {background-image: url("https://www.wellbeing.com.au/wp-content/uploads/blogimgs/2014/08/111.jpeg");
-                text-align:center;
-                  background-repeat: no-repeat;
-                  background-size: 1500px 900px;
-            }
-            
-    </style>
-        
-        
+        <link href='https://fonts.googleapis.com/css?family=Parisienne' rel='stylesheet'>   
     </head>
-    
-    <body>
-        
-        
-        
-       
-        <p style="color:#989898"></p>
-    
-        <div id = "theBar"></div><!--
-        --><div id = "main"><br><br>
-        <a href="waiting.html">
-            <button style="height:100px;width:150px;font-size : 30px; font-family:Berkshire Swash; width: 300px; height: 50px;"type="button">Waiting Staff</button>
-        </a><br><br>
-        &nbsp;
-        <a href="chef.html">
-            <button style="height:100px;width:150px;font-size : 30px; font-family:Berkshire Swash; width: 300px; height: 50px;"type="button">Kitchen Staff</button>
-        </a><br><br>
-        &nbsp;
-        <a href="management.html">
-            <button style="height:100px;width:150px;font-size : 30px; font-family:Berkshire Swash; width: 300px; height: 50px;"type="button">Management</button>
-        </a><br><br>
-        &nbsp;
-        <a href="SignIn.html">
-    <button style="height:100px;width:150px;font-size : 30px; font-family:Berkshire Swash; width: 300px; height: 50px;"type="button">Back to Home</button>
-        </a><br><br>
-        &nbsp;
-        <a href="SignIn.html">
-    <button style="height:100px;width:150px;font-size : 30px; font-family:Berkshire Swash; width: 300px; height: 50px;"type="button">Log Out</button>
-        </a><br><br>
-        &nbsp;
-           
-        </div>
 
+    <style>
+        body { background: url("https://www.wellbeing.com.au/wp-content/uploads/blogimgs/2014/08/111.jpeg")  no-repeat center center fixed; background-size: cover; text-align:center; }
+        #navBar{ margin-left:-1vw; width:100.5vw; height:6vh; margin-top:5%; /*background-color: green;*/ background: url("https://i.pinimg.com/originals/19/2a/8c/192a8c19663a404a33b8321d88acede5.jpg") no-repeat center center fixed; background-size: cover; }
+        #container{  width:99vw; height:85vh; }
+        #contents{ width:38%; height:79vh; float: left; }
+        #docket{ width:24%; height:73vh; background-color: white; float:left; border:1px solid black; }
+        #docketHeader{ width:100%; height:10%; }
+        #logo{ width: 40%; height:100%; background-color: #e8e9ea; float:left; text-align: center; font-family: "Parisienne"; font-weight: bold; font-size: 3vw; border-radius:25%; }
+        #listen{ height:100%; width:30%; float:left; float: top; text-align: center; background-color: green; font-size: 1vw; border-radius:25%; font-family: "Berkshire Swash" }
+        #blank{ height:100%; width:30%; text-align: center; float:right; float: top; background-color: green; font-size: 1vw; border-radius:25%; font-family: "Berkshire Swash" }
+        #choices{ width:100%; height:63%; border-bottom: 1px solid black; margin-top: 17%; }
+        .ourItems{ height:16%; border:1px solid black; margin-bottom: 1%; margin-left: 5%; margin-right: 5%; background-color: #e8e9ea; text-align: center; border-radius: 10%; margin-top: 5%;}
+        #management, #waiting, #chefs, #log{ font-size:1.3vw; font-family: "Berkshire Swash"; float:center; list-style:none; padding-left: 0pt; padding-top: 8pt;  }
+        .time{ height:6%; border:1px solid black; margin-bottom: 1%; margin-left: 5%; margin-right: 5%; background-color: #e8e9ea; text-align: center; border-radius: 10%; margin-top: 5%; float: bottom; }
+        #clock{ font-size:1.1vw; font-family: "Berkshire Swash"; float:center; list-style:none; padding-left: 0pt; padding-top: 8pt; }
+        a { color:inherit; text-decoration: none; }
+    </style>
     
+    <body onload="theClock()">
+        <div id="container">
+            <div id = "navBar"></div>
+            <div id="contents"></div>
+            <div id="docket">
+                <div id='docketHeader'>
+                    <div id="listen"><h3>POSITION</h3></div>
+                    <div id='logo'>D</div>
+                    <div id='blank'><h3>POSITION</h3></div>
+                </div>
+                <div id="choices">
+                    <a href="management.html"> <div class='ourItems'><li id='management'>MANAGEMENT</li></div></a>
+                    <a href = "waiting.html"><div class='ourItems'><li id='waiting'>WAITING STAFF</li></div></a>
+                    <a href = "chef.html"><div class='ourItems'><li id='chefs'>CHEFS</li></div></a>
+                    <div class='ourItems' onclick="logout()"><li id='log'>LOG-OUT</li></div>
+                </div>
+                <div class="time" id="clock"></div>
+            </div>
+        </div>
     </body>
+
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+        apiKey: "AIzaSyCdM0cDcs2qJB2llg1a-61TaaABpgzfR-A",
+        authDomain: "test-635ac.firebaseapp.com",
+        databaseURL: "https://test-635ac.firebaseio.com",
+        projectId: "test-635ac",
+        storageBucket: "",
+        messagingSenderId: "88199967986"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script>
+        function theClock() {
+            var today = new Date();
+            var hours = today.getHours();
+            var minutes = today.getMinutes();
+            var seconds = today.getSeconds();
+            minutes = check(minutes);
+            seconds = check(seconds);
+            document.getElementById('clock').innerHTML = hours + ":" + minutes + ":" + seconds;
+            var t = setTimeout(theClock, 500);
+        }
+        function check(e) {
+            if (e < 10) {e = "0" + e};
+            return e;
+        }
+        function logout(){
+            var lilRef = firebase.database().ref().child("curLog");
+            lilRef.set({Logged: ""});
+            firebase.auth().signOut();
+            window.location="index.html";
+        }
+    </script>
 
 </html>
